@@ -11,3 +11,7 @@ arbitrary binary protocols in a no\_std environment.
 ## License
 
 **byteorder-cursor** is licensed under the BSD-3-Clause license.
+
+## Example
+
+See `examples` directory.
