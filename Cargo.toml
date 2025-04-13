@@ -1,0 +1,22 @@
+[package]
+authors = ["Max Maisel <max.maisel@posteo.de>"]
+categories = ["encoding", "no-std", "parsing"]
+description = """\
+    A std::io::Cursor like buffer interface with byteorder support and \
+    no_std compatibility.\
+"""
+edition = "2021"
+keywords = ["byteorder", "cursor"]
+license = "BSD-3-Clause"
+name = "byteorder-cursor"
+readme = "README.md"
+repository = "https://github.com/mmmaisel/byteorder-cursor/"
+rust-version = "1.78.0"
+version = "1.0.0"
+
+[dependencies]
+byteorder = { version = "1.5", default-features = false }
+
+[features]
+default = ["std"]
+std = ["byteorder/std"]
