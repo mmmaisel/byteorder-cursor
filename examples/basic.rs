@@ -1,6 +1,6 @@
-use byteorder_cursor::{BigEndian, Cursor, LittleEndian};
+use byteorder_cursor::{BigEndian, BufferTooSmall, Cursor, LittleEndian};
 
-fn main() {
+fn main() -> Result<(), BufferTooSmall> {
     let mut buffer = [0u8; 16];
     let mut cursor = Cursor::new(&mut buffer[..]);
 
@@ -11,6 +11,7 @@ fn main() {
 
     println!("Remaining space in cursor is {} bytes", cursor.remaining());
     cursor.set_position(0);
+    cursor.check_remaining(7)?;
 
     let x = cursor.read_u8();
     let y = cursor.read_u16::<BigEndian>();
@@ -21,4 +22,6 @@ fn main() {
 
     println!("Read-back from buffer: {x}, {y}, {z}, {w:?}");
     println!("Cursor is now at position {}", cursor.position());
+
+    Ok(())
 }
